@@ -48,6 +48,7 @@ type Base struct {
 	FileName    string
 	Url         string
 	CropOptions map[string]*CropOption `json:",omitempty"`
+	Pages       uint
 	Crop        bool                   `json:"-"`
 	Valid       bool                   `json:"-"`
 	FileHeader  FileHeader             `json:"-"`
@@ -181,6 +182,15 @@ func (b *Base) GetCropOption(name string) *image.Rectangle {
 		}
 	}
 	return nil
+}
+
+func (b *Base) GetPages() uint {
+	return b.Pages
+}
+
+func (b *Base) SetPages(pages uint) bool {
+	b.Pages = pages
+	return true
 }
 
 // Retrieve retrieve file content with url

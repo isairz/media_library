@@ -39,6 +39,9 @@ type MediaLibrary interface {
 	Cropped(values ...bool) bool
 	GetCropOption(name string) *image.Rectangle
 
+	GetPages() uint
+	SetPages(page uint) bool
+
 	Store(url string, option *Option, reader io.Reader) error
 	Retrieve(url string) (*os.File, error)
 
